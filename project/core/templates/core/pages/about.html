@@ -1,0 +1,101 @@
+{% extends "core/base.html" %}
+{% load static components %}
+
+{% block title %}Sobre Mi{% endblock title %}
+
+{% block main %}
+<section id="sobre-mi" 
+    class="relative overflow-hidden p-4 md:p-6 lg:p-8 bg-gradient-to-r from-[hsla(202,61%,50%)] via-[hsla(202,61%,65%)] to-[hsl(202,61%,50%)]">
+    <!-- waves -->
+    <svg
+        class="z-0 absolute left-0  -translate-x-[50%] lg:-translate-x-[10%] top-0 h-full"
+        viewBox="0 0 320 1440">
+        <path
+            fill="#ADD4EB"
+            fill-opacity="1"
+            d="m 224,0 -5.3,21.8 C 213,43.6 203,87 197.3,131 192,174.5 192,218 192,262 c 0,43.5 0,87 5.3,131 5.7,43.4 15.7,87 -5.3,131 -21,43.3 -75,87 -101.3,131 -26.7,43.2 -26.7,87 0,130 26.3,44.1 80.3,88 69.3,131 -11,44 -85,88 -112,131 -27,43.9 -5,88 32,131 37,43.8 91,87 101.3,131 10.7,43.7 -21.3,87 -37.3,109 l -16,22 H 0 v -21.8 C 0,1396.4 0,1353 0,1309 0,1265.5 0,1222 0,1178 0,1134.5 0,1091 0,1047 0,1003.6 0,960 0,916 0,872.7 0,829 0,785 0,741.8 0,698 0,655 0,610.9 0,567 0,524 0,480 0,436 0,393 0,349.1 0,305 0,262 0,218.2 0,175 0,131 0,87.3 0,44 0,22 V 0 Z"
+            id="path1" />
+        </svg>
+    
+    <svg
+        class="z-0 absolute right-0 translate-x-[50%] lg:translate-x-[10%] rotate-180 top-0 h-full"
+        viewBox="0 0 320 1440">
+        <path
+        fill="#ADD4EB"
+        fill-opacity="1"
+        d="m 224,0 -5.3,21.8 C 213,43.6 203,87 197.3,131 192,174.5 192,218 192,262 c 0,43.5 0,87 5.3,131 5.7,43.4 15.7,87 -5.3,131 -21,43.3 -75,87 -101.3,131 -26.7,43.2 -26.7,87 0,130 26.3,44.1 80.3,88 69.3,131 -11,44 -85,88 -112,131 -27,43.9 -5,88 32,131 37,43.8 91,87 101.3,131 10.7,43.7 -21.3,87 -37.3,109 l -16,22 H 0 v -21.8 C 0,1396.4 0,1353 0,1309 0,1265.5 0,1222 0,1178 0,1134.5 0,1091 0,1047 0,1003.6 0,960 0,916 0,872.7 0,829 0,785 0,741.8 0,698 0,655 0,610.9 0,567 0,524 0,480 0,436 0,393 0,349.1 0,305 0,262 0,218.2 0,175 0,131 0,87.3 0,44 0,22 V 0 Z"
+        id="path1" />
+    </svg>
+
+    <!-- about me -->
+    <div class="max-w-7xl h-full mx-auto flex flex-col gap-12 lg:gap-10 py-10">
+    <h1 class="text-darkblue-card-gradient relative text-center text-3xl sm:text-4xl xl:text-6xl underline decoration-2 decoration-double underline-offset-4">Sobre Mi</h1>
+
+    {% element about_card %}
+        {% slot text %}
+        Soy venezolano, mi lengua nativa es el español, pero también hablo portugués y algo de inglés, curiosamente, la mayoría de mis interacciones en línea son en inglés.
+        {% endslot %}
+
+        {% slot img %}
+        <img class="z-10 relative mx-auto max-h-80 object-cover rounded-3xl" src="{% static 'core/images/me_profile.png' %}" alt="keiner mendoza">
+        {% endslot %}
+
+        {% slot figcaption %}
+        Yo
+        {% endslot %}
+    {% endelement %}
+
+    {% element about_card img_to_left=True %}
+        {% slot text %}
+        Me gradué como licenciado en Economía al mismo tiempo que me hacía cargo del área administrativa del negocio familiar, una panadería. Estas dos experiencias me enseñaron constancia, atención a los detalles y a priorizar las necesidades del cliente.
+        {% endslot %}
+
+        {% slot img %}
+            <img class="z-10 relative w-full object-cover rounded-3xl" src="{% static 'core/images/panaderia.png' %}" alt="yo en la panaderia con mi madre">
+        {% endslot %}
+
+        {% slot figcaption %}
+        Mi madre y yo en nuestra panaderia
+        {% endslot %}
+    {% endelement %}
+    
+    
+
+    {% element about_card %}
+        {% slot text %}
+        Soy una persona abierta a los cambios y que busca constantemente superarse. Prueba de esto es que emigré a un país con una lengua diferente en busca de mejores oportunidades.
+        {% endslot %}
+
+        {% slot img %}
+        <iframe class="max-w-[min(100%,32rem)] md:max-w-sm mx-auto relative z-10 rounded-lg" width="560" height="315" src="https://www.youtube.com/embed/kP7-FN1Qy3g?si=LT0VaFfVro9CMExs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        {% endslot %}
+
+        {% slot figcaption %}
+        Proyecto Personal. Hecho con Django & Javascript 
+        {% endslot %}
+    {% endelement %}
+
+    {% element about_card img_to_left=True %}
+        {% slot text %}
+        Me apasiona el desarrollo web y amo construir páginas para otras personas. Cada proyecto me aporta algo nuevo y actualmente estoy buscando un trabajo a tiempo completo como desarrollador web.
+        {% endslot %}
+
+        {% slot img %}
+        <iframe class="max-w-[min(100%,32rem)] md:max-w-sm mx-auto relative z-10 rounded-lg" width="560" height="315" src="https://www.youtube.com/embed/YHcE5yeVJME?si=xZwcTUgo_zjdQCbF" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        {% endslot %}
+
+        {% slot figcaption %}
+        Proyecto Personal Para CS50w
+        {% endslot %}
+    {% endelement %}
+
+</div>
+</section>
+{% include "core/partials/home/contact.html" %}
+
+{% endblock main %}
+
+{% block footer_nav_this_page %}
+<li><a class="hover:text-white cursor-pointer hover:underline underline-offset-4" href="#sobre-mi">Sobre Mi</a></li>
+<li><a class="hover:text-white cursor-pointer hover:underline underline-offset-4" href="#contact">Contactame</a></li>
+{% endblock footer_nav_this_page %}

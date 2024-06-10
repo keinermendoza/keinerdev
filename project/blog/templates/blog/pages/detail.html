@@ -1,0 +1,37 @@
+{% extends "core/base.html" %}
+{% load static %}
+{% block title %}Blog - {{post.title | capfirst}}{% endblock title %}
+
+{% block script %}
+{% endblock script %}
+
+{% block main %}
+<section class="bg-custom-gray py-10 p-4 md:p-6 lg:p-8" >
+    <div class="max-w-7xl mx-auto ">
+        <div class="text-center py-10">
+            <h2 class="text-4xl">{{post.title | capfirst}}</h2>
+        </div>
+        <article
+            class="max-w-lg p-5 rounded-lg shadow-lg bg-white flex flex-col gap-5">
+            <header class="p-3 rounded-md border-2 border-custom-gray flex justify-between items-center gap-5
+                transition-all hover:cursor-pointer hover:bg-primary 
+                hover:outline outline-2  hover:outline-darkblue-card-gradient
+            ">
+                <h3 class="text-xl">{{post.title}}</h3>
+                <img
+                    class="w-6 h-6"
+                src="{% static 'icons/arrow-right.svg' %}" alt="Read the article">
+            </header>
+            <figure class="bg-custom-gray w-full min-h-60 rounded-md grid">
+                <img 
+                    class="w-3/4 place-self-center"
+                src="{% static post.image %}" alt="representative image of {{post.title}}">
+            </figure>
+            <div>
+                <p>{{post.preview}}</p>
+            </div>
+
+        </article>
+    </div>
+</section>
+{% endblock main %}

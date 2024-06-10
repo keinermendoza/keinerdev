@@ -1,0 +1,21 @@
+{% extends "core/base.html" %}
+{% load static %}
+{% block title %}Blog{% endblock title %}
+
+{% block script %}
+<script src="{% static 'js/blog.js' %}"></script>
+{% endblock script %}
+
+{% block main %}
+<section class="bg-custom-gray grow py-10 p-4 md:p-6 lg:p-8" >
+    <div class="max-w-7xl h-full mx-auto ">
+        <div class="text-center py-10">
+            <h2 class="text-4xl">Todas las publicaciones</h2>
+        </div>
+        
+        {% include "blog/partials/list/filter.html" with filter=filter  %}
+        {% include "blog/partials/list/paginated_list.html"  %}
+    </div>
+</section>
+
+{% endblock main %}

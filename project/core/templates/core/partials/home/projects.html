@@ -1,0 +1,56 @@
+{% load static markdown %}
+
+<section id="projects" class="px-4 md:px-6 lg:px-8 bg-custom-gray" id="porjects">
+    <div class="max-w-7xl mx-auto">
+
+        <div class="text-center py-10">
+            <h2 class="text-4xl">PRINCIPALES PROYECTOS</h2>
+            <p class="text-xl">Sitios web reales para clientes reales</p>
+        </div>
+
+        <div id="project-cards-container"
+            class="grid grid-cols-2 lg:grid-cols-3 gap-5"
+        >
+            {% for project in projects %}
+
+            {% if forloop.counter|divisibleby:2 %}
+                {% include 'project_tecnologies_card.html' with tecnologies=tecnologies light_tr=True %}
+            {% endif %}
+
+            <article class="col-span-2 min-h-[400px] gap-3 p-3 sm:gap-5 sm:p-5 flex md:flex-row flex-col
+             bg-white rounded-xl shadow-xl
+             {% if forloop.counter|divisibleby:2 %}lg:col-start-2{% else %}lg:col-start-1{% endif %}">
+  
+                <header class="flex flex-col gap-3 flex-1">
+                    <h3 class="uppercase text-2xl">{{ project.customer}}</h3>
+                    <a class="text-primary" href="">
+                        <span>SVG</span>
+                        <span>Visitar Sitio</span>
+                    </a>
+                    <figure class="grow rounded-lg overflow-hidden">
+                        <img src="{% static project.image %}" alt="{{project.customer}}"
+                            class="w-full h-full object-cover"
+                        >
+                    </figure>
+                </header>
+                <div class="flex flex-col items-start md:mt-9 md:px-3 gap-3 flex-1">
+                    <p class="hidden sm:block text-xl text-gray-600">{{project.customer_commercial_field}}</p>
+                    <div class="markdown-simple-container">
+                        {{ project.description|markdown }}
+                    </div>
+                </div>
+            </article>
+           
+            {% if forloop.counter0|divisibleby:2 %}
+                {% include 'project_tecnologies_card.html' with tecnologies=tecnologies %}
+            {% endif %}
+            
+            {% endfor %}
+        </div>    
+
+        <div class="flex justify-center items-center py-10 ">
+            <a class="primary-button-color-font block text-2xl px-6 pt-3 pb-2
+            rounded-lg shadow-lg bg-gradient-to-bl from-primary to-darkblue-card" href="#todos-los-proyectos">Ver Mas</a>
+        </div>
+    </div>
+</section>

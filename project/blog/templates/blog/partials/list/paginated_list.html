@@ -1,0 +1,37 @@
+{% load static %}
+<div class="flex flex-col items-center gap-5" id="blog_list_paginated_list">
+   
+
+    <div 
+        id="posts-container"
+        class="grid md:grid-cols-2 lg:grid-cols-3 gap-5"
+    >
+        {% for post in posts %}
+        <article
+            class="max-w-lg p-5 rounded-lg shadow-lg bg-white flex flex-col gap-5">
+            <a href="{{post.get_absolute_url}}" class="p-3 rounded-md border-2 border-custom-gray flex justify-between items-center gap-5
+                transition-all hover:cursor-pointer hover:bg-primary 
+                hover:outline outline-2  hover:outline-darkblue-card-gradient
+            ">
+                <h3 class="text-xl">{{post.title}}</h3>
+                <img
+                    class="w-6 h-6"
+                src="{% static 'icons/arrow-right.svg' %}" alt="Read the article">
+            </a>
+            <figure class="bg-custom-gray w-full min-h-60 rounded-md grid">
+                <img 
+                    class="w-3/4 place-self-center"
+                src="{% static post.image %}" alt="representative image of {{post.title}}">
+            </figure>
+            <div>
+                <p>{{post.preview}}</p>
+            </div>
+
+        </article>
+        {% endfor %}
+    </div>
+
+
+    {% include "blog/partials/list/pagination.html" %}
+
+</div>

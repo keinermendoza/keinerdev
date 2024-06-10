@@ -1,0 +1,17 @@
+<div class="overflow-hidden relative z-10 text-center hidden lg:grid place-content-center text-transparent hover:text-white 
+    delay-1000 duration-700 hover:duration-200 hover:delay-0  transition-colors from-darkblue-back to-darkblue-card rounded-xl
+    {% if light_tr %}bg-gradient-to-tr{% else %}bg-gradient-to-bl{% endif %}
+    
+    ">
+    <div class="absolute z-20 top-0 left-0 w-full h-full bars"></div>
+    <article class="relative z-30 hover:p:hidden">
+    <h3 class="uppercase underline underline-offset-4 text-3xl mb-3">{{project.customer}}</h3>
+    <p class="text-center text-xl text-white font-oxanium font-semibold">Ver</p>
+    <h4 class="text-white mb-5">Principales tecnologias utilizadas</h4>
+    <ul class="text-xl font-medium grid gap-1">
+    {% for tecnology  in project.tecnologies  %}
+        <li>{{tecnology}}</li>
+    {% endfor %}
+    </ul>
+    </article>
+</div>

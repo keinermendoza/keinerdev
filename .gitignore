@@ -1,0 +1,11 @@
+__pycache__
+db.sqlite
+assets/tailwind/output.css
+node_modules
+project/staticfiles/js/**
+project/staticfiles/css/**
+
+backups
+.env
+.env.db
+.env.dev

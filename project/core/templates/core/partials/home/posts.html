@@ -1,0 +1,53 @@
+{% load static %}
+<section class="bg-custom-gray px-4 md:px-6 lg:px-8" id="posts">
+    <div class="max-w-7xl mx-auto flex flex-col items-center gap-5">
+        <div class="text-center py-10">
+            <h2 class="text-4xl">ULTIMAS PUBLICACIONES</h2>
+        </div>
+
+        <div 
+            id="posts-container"
+            x-data="{lastItemShow:false, checkSize(){this.lastItemShow = window.innerWidth <= 768 || window.innerWidth >= 1024 }}"
+            class="grid md:grid-cols-2 lg:grid-cols-3 gap-5"
+        >
+            {% for post in posts %}
+            <article
+                {% if forloop.last %}
+                id="lastItem"
+                x-show="lastItemShow"
+                x-cloak
+                x-init="checkSize()"
+                x-on:resize.window="checkSize()"
+                {% endif %} 
+                class="max-w-lg p-5 rounded-lg shadow-lg bg-white flex flex-col gap-5">
+                <a href="{{post.get_absolute_url}}"
+                    class="p-3 rounded-md border-2 border-custom-gray flex justify-between items-center gap-5
+                    transition-all hover:cursor-pointer hover:bg-primary 
+                    hover:outline outline-2  hover:outline-darkblue-card-gradient
+                ">
+                    <h3 class="text-xl">{{post.title}}</h3>
+                    <img
+                        class="w-6 h-6"
+                    src="{% static 'icons/arrow-right.svg' %}" alt="Read the article">
+                </a>
+                <figure class="bg-custom-gray w-full min-h-60 rounded-md grid">
+                    <img 
+                        class="w-3/4 place-self-center"
+                    src="{% static post.image %}" alt="representative image of {{post.title}}">
+                </figure>
+                <div>
+                    <p>{{post.preview}}</p>
+                </div>
+
+            </article>
+            {% endfor %}
+        </div>
+
+        <div class="text-center py-10 ">
+            <a class="primary-button-color-font block text-xl px-6 pt-3 pb-2 rounded-lg shadow-lg" 
+            href="#todos-los-proyectos">
+            ver todas las publicaciones
+            </a>
+        </div>
+    </div>
+</section>
